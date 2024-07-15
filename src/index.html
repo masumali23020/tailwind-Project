@@ -1,0 +1,1490 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./output.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="./node_modules/apexcharts/dist/apexcharts.css"
+    />
+  </head>
+  <script>
+    window.onload = function () {
+      var chart = new CanvasJS.Chart("chartContainer", {
+        axisX: {
+          valueFormatString: "MMM",
+        },
+        axisY: {
+          suffix: "%",
+        },
+        toolTip: {
+          shared: true,
+        },
+        legend: {
+          cursor: "pointer",
+          verticalAlign: "top",
+          horizontalAlign: "center",
+          dockInsidePlotArea: true,
+          itemclick: toogleDataSeries,
+        },
+        data: [
+          {
+            type: "line",
+            axisYIndex: 1,
+
+            name: "WPPOOL",
+            showInLegend: true,
+            markerSize: 0,
+            yValueFormatString: "#%",
+            dataPoints: [
+              { x: new Date(2014, 0, 01), y: 20 },
+              { x: new Date(2014, 01, 01), y: 10 },
+              { x: new Date(2014, 02, 01), y: 40 },
+              { x: new Date(2014, 03, 01), y: 89 },
+              { x: new Date(2014, 04, 01), y: 90 },
+              { x: new Date(2014, 05, 01), y: 92 },
+              { x: new Date(2014, 06, 01), y: 50 },
+              { x: new Date(2014, 07, 01), y: 75 },
+              { x: new Date(2014, 08, 01), y: 27 },
+              { x: new Date(2014, 09, 01), y: 49 },
+              { x: new Date(2014, 10, 01), y: 46 },
+              { x: new Date(2014, 11, 01), y: 27 },
+              { x: new Date(2015, 00, 01), y: 50 },
+            ],
+          },
+          {
+            type: "line",
+            axisYIndex: 1,
+            name: "Google",
+            showInLegend: true,
+            markerSize: 0,
+            yValueFormatString: "$#,###%",
+            dataPoints: [
+              { x: new Date(2014, 0, 01), y: 1 },
+              { x: new Date(2014, 01, 01), y: 20 },
+              { x: new Date(2014, 02, 01), y: 25 },
+              { x: new Date(2014, 03, 01), y: 49 },
+              { x: new Date(2014, 04, 01), y: 60 },
+              { x: new Date(2014, 05, 01), y: 42 },
+              { x: new Date(2014, 06, 01), y: 50 },
+              { x: new Date(2014, 07, 01), y: 65 },
+              { x: new Date(2014, 08, 01), y: 17 },
+              { x: new Date(2014, 09, 01), y: 39 },
+              { x: new Date(2014, 10, 01), y: 56 },
+              { x: new Date(2014, 11, 01), y: 17 },
+              { x: new Date(2015, 00, 01), y: 30 },
+            ],
+          },
+          {
+            type: "line",
+            axisYIndex: 1,
+            name: "Microsoft",
+            showInLegend: true,
+            markerSize: 0,
+            yValueFormatString: "$#,###%",
+            dataPoints: [
+              { x: new Date(2014, 0, 01), y: 0 },
+              { x: new Date(2014, 01, 01), y: 10 },
+              { x: new Date(2014, 02, 01), y: 30 },
+              { x: new Date(2014, 03, 01), y: 59 },
+              { x: new Date(2014, 04, 01), y: 80 },
+              { x: new Date(2014, 05, 01), y: 92 },
+              { x: new Date(2014, 06, 01), y: 50 },
+              { x: new Date(2014, 07, 01), y: 75 },
+              { x: new Date(2014, 08, 01), y: 67 },
+              { x: new Date(2014, 09, 01), y: 49 },
+              { x: new Date(2014, 10, 01), y: 26 },
+              { x: new Date(2014, 11, 01), y: 37 },
+              { x: new Date(2015, 00, 01), y: 40 },
+            ],
+          },
+          {
+            type: "line",
+            axisYIndex: 1,
+            name: "Twiter Index",
+            showInLegend: true,
+            markerSize: 0,
+            yValueFormatString: "$#,###%",
+            dataPoints: [
+              { x: new Date(2014, 0, 01), y: 0 },
+              { x: new Date(2014, 01, 01), y: 20 },
+              { x: new Date(2014, 02, 01), y: 30 },
+              { x: new Date(2014, 03, 01), y: 40 },
+              { x: new Date(2014, 04, 01), y: 40 },
+              { x: new Date(2014, 05, 01), y: 52 },
+              { x: new Date(2014, 06, 01), y: 30 },
+              { x: new Date(2014, 07, 01), y: 45 },
+              { x: new Date(2014, 08, 01), y: 27 },
+              { x: new Date(2014, 09, 01), y: 49 },
+              { x: new Date(2014, 10, 01), y: 46 },
+              { x: new Date(2014, 11, 01), y: 27 },
+              { x: new Date(2015, 00, 01), y: 60 },
+            ],
+          },
+        ],
+      });
+      chart.render();
+
+      function toogleDataSeries(e) {
+        if (
+          typeof e.dataSeries.visible === "undefined" ||
+          e.dataSeries.visible
+        ) {
+          e.dataSeries.visible = false;
+        } else {
+          e.dataSeries.visible = true;
+        }
+        chart.render();
+      }
+    };
+  </script>
+
+  <body class="bg-[#EDEDED]">
+    <div class="mx-auto max-w-7xl relative">
+      <div
+        class="relative bg-[#2042B6] bg-xsm sm:bg-sm md:bg-half bg-center bg-no-repeat bg-blend-multiply h-[400px] md:h-screen p-3 m-2 mx-auto max-w-7xl z-40"
+        style="background-image: url(./images/Group\ 442.png)"
+      >
+        <img
+          src="./images/Rectangle 1.png"
+          alt="Rectangle"
+          class="absolute left-12 md:left-[34%] top-28 md:top-20 w-[296px] md:w-[396px] h-[200px] md:h-[352px] -z-10"
+        />
+        <nav class="fixed top-0 left-0 w-full z-50">
+          <div class="bg-[#2042B6] mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="flex h-16 items-center justify-between">
+              <div class="flex items-center">
+                <div class="flex-shrink-0">
+                  <img
+                    class="h-[34.63px] w-[200.52px]"
+                    src="./images/logo.png"
+                    alt="wppool logo"
+                  />
+                </div>
+              </div>
+              <div class="hidden md:block">
+                <div class="ml-4 flex items-center md:ml-6">
+                  <button
+                    type="button"
+                    class="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                  >
+                    <span class="absolute -inset-1.5"></span>
+                    <span class="sr-only">View notifications</span>
+                    <svg
+                      class="h-6 w-6"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <div class="-mr-2 flex space-x-2 md:hidden">
+                <!-- Mobile menu button -->
+                <button
+                  class="hidden sm:block bg-transparent border-2 border-gray-50 rounded-3xl px-4 text-sm text-white"
+                >
+                  Download the 2024 Report
+                </button>
+                <button
+                  type="button"
+                  class="relative inline-flex items-center justify-center rounded-md bg-transparent p-2 text-gray-100 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                  aria-controls="mobile-menu"
+                  aria-expanded="false"
+                  id="humbager"
+                >
+                  <span class="absolute -inset-0.5"></span>
+                  <span class="sr-only">Open main menu</span>
+                  <!-- Menu open: "hidden", Menu closed: "block" -->
+                  <svg
+                    class="block h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                    />
+                  </svg>
+                  <!-- Menu open: "block", Menu closed: "hidden" -->
+                  <svg
+                    class="hidden h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mobile menu, show/hide based on menu state. -->
+          <div
+            class="md:hidden bg-white rounded-md w-[333px] absolute top-0 right-3 h-[400px] transform transition-all duration-150"
+            id="mobile-menu"
+          >
+            <div class="text-[#191618] flex justify-between p-2 mr-4">
+              <button
+                class="bg-[#2042B6] px-4 py-2 rounded-3xl text-sm text-gray-100"
+              >
+                Download the 2024 Report
+              </button>
+              <p
+                id="closed"
+                class="hover:text-[#0f40e0] px-2 py-2 rounded-3xl cursor-pointer"
+              >
+                X
+              </p>
+            </div>
+            <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
+              <a
+                href="#"
+                class="block rounded-md px-3 py-2 text-base font-medium text-[#191618] hover:bg-blue-400 transform transition-all duration-300 hover:text-white"
+                >The WPPOOL Index</a
+              >
+              <a
+                href="#"
+                class="block rounded-md px-3 py-2 text-base font-medium text-[#191618] hover:bg-blue-400 transform transition-all duration-300 hover:text-white"
+                >All Companies</a
+              >
+              <a
+                href="#"
+                class="block rounded-md px-3 py-2 text-base font-medium text-[#191618] hover:bg-blue-400 transform transition-all duration-300 hover:text-white"
+                >Potential Future Listings</a
+              >
+              <a
+                href="#"
+                class="block rounded-md px-3 py-2 text-base font-medium text-[#191618] hover:bg-blue-400 transform transition-all duration-300 hover:text-white"
+                >State of USA</a
+              >
+              <a
+                href="#"
+                class="block rounded-md px-3 py-2 text-base font-medium text-[#191618] hover:bg-blue-400 transform transition-all duration-300 hover:text-white"
+                >About WPPOOL</a
+              >
+              <a
+                href="#"
+                class="block rounded-md px-3 py-2 text-base font-medium text-[#191618] hover:bg-blue-400 transform transition-all duration-300 hover:text-white"
+                >WPPOOL Portfolio Companies</a
+              >
+              <a
+                href="#"
+                class="block rounded-md px-3 py-2 text-base font-medium transform transition-all duration-300 hover:text-blue-gray-700 text-[#2042B6] underline"
+                >Visit WPPOO</a
+              >
+            </div>
+          </div>
+        </nav>
+
+        <header class="">
+          <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row gap-5 md:gap-0 mt-5 md:mt-14">
+              <!-- left side  -->
+              <div
+                class="w-full md:w-1/4 grid grid-cols-2 md:grid-cols-1 gap-3"
+              >
+                <div>
+                  <h2 class="text-white font-normal text-2xl md:text-3xl">
+                    60
+                  </h2>
+                  <p class="text-xs sm:text-sm md:text-base text-[#CDCDCD]">
+                    Companis
+                  </p>
+                </div>
+                <div>
+                  <h2 class="text-white font-normal text-2xl md:text-3xl">
+                    $100B
+                  </h2>
+                  <p class="text-xs sm:text-sm md:text-base text-[#CDCDCD]">
+                    Market cap
+                  </p>
+                </div>
+                <div>
+                  <h2 class="text-white font-normal text-2xl md:text-3xl">
+                    3.5 <span>x</span>
+                  </h2>
+                  <p class="text-xs sm:text-sm md:text-base text-[#CDCDCD]">
+                    Revenue multiple
+                  </p>
+                </div>
+                <div>
+                  <h2 class="text-white font-normal text-2xl md:text-3xl">
+                    60%
+                  </h2>
+                  <p class="text-xs sm:text-sm md:text-base text-[#CDCDCD]">
+                    LTM avg.revenu grouth rate
+                  </p>
+                </div>
+              </div>
+              <!-- right side  -->
+              <div class="w-full md:mt-8 md:p-8 md:w-3/4 mb-20 md:mb-32">
+                <h1
+                  class="text-white font-[400] text-3xl md:text-[60px] mb-2 md:mb-5"
+                >
+                  The WPPOOL Index
+                </h1>
+                <p class="text-xs sm:text-sm md:text-lg font-[350] text-white">
+                  Monitor the performance of emerging, publicly traded,
+                  financial technology companies
+                </p>
+              </div>
+            </div>
+          </div>
+        </header>
+      </div>
+
+      <!-- Main Content -->
+      <main class="pt-20">
+        <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+          <!-- Your content -->
+
+          <!-- wewop index chart  -->
+          <section class="mb-10">
+            <div class="flex flex-col md:flex-row gap-3 bg-white">
+              <!-- left side  -->
+              <div class="w-full md:w-1/4">
+                <div>
+                  <ul
+                    class="bg-[#EFF3F6] flex flex-col space-y-5 p-2 rounded-sm"
+                  >
+                    <li
+                      class="hover:bg-blue-700 px-4 py-2 rounded-md cursor-pointer transform duration-150 transition-all flex justify-between text-base text-[#647888] hover:text-white"
+                    >
+                      <p>The Index</p>
+                      <p>+</p>
+                    </li>
+                    <li
+                      class="hover:bg-blue-700 px-4 py-2 rounded-md cursor-pointer transform duration-150 transition-all flex justify-between text-base text-[#647888] hover:text-white"
+                    >
+                      <p>The Index Tab Two</p>
+                      <p>+</p>
+                    </li>
+                    <li
+                      class="hover:bg-blue-700 px-4 py-2 rounded-md cursor-pointer transform duration-150 transition-all flex justify-between text-base text-[#647888] hover:text-white"
+                    >
+                      <p>The Index Tab Three</p>
+                      <p>+</p>
+                    </li>
+                    <li
+                      class="hover:bg-blue-700 px-4 py-2 rounded-md cursor-pointer transform duration-150 transition-all flex justify-between text-base text-[#647888] hover:text-white"
+                    >
+                      <p>The Index Tab Four</p>
+                      <p>+</p>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <!-- right side  -->
+              <div class="w-full md:w-[75%] bg-white h-[550px]">
+                <div>
+                  <div class="flex mb-5 p-3">
+                    <img
+                      src="./images/Union.png"
+                      alt="reactangle"
+                      class="h-10 w-14 text-[#191618]"
+                    />
+                    <h2 class="text-[#191618] text-3xl ml-4">
+                      The WPPOOL Index
+                    </h2>
+                  </div>
+
+                  <!-- card  -->
+                  <div
+                    class="grid grid-cols-2 md:grid-cols-4 w-full justify-between gap-2"
+                  >
+                    <div
+                      class="bg-[#F3F3F3] px-4 flex justify-between gap-10 p-3 rounded-sm"
+                    >
+                      <p class="text-[#FC714D]">+66.2%</p>
+                      <div class="flex gap-2">
+                        <p class="text-[#191618] text-right text-[12px]">
+                          WPPOOL <br />
+                          Index
+                        </p>
+                        <div class="bg-[#FC714D] w-1 h-8"></div>
+                      </div>
+                    </div>
+                    <!-- single card  -->
+                    <div
+                      class="bg-[#F3F3F3] px-4 flex justify-between gap-10 p-3 rounded-sm"
+                    >
+                      <p class="text-[#615DE3]">+26.6%</p>
+                      <div class="flex gap-2">
+                        <p class="text-[#191618] text-right text-[12px]">
+                          Google <br />
+                          Index
+                        </p>
+                        <div class="bg-[#615DE3] w-1 h-8"></div>
+                      </div>
+                    </div>
+                    <!-- singale card end  -->
+                    <!-- single card  -->
+                    <div
+                      class="bg-[#F3F3F3] px-4 flex justify-between gap-10 p-3 rounded-sm"
+                    >
+                      <p class="text-[##7CA63A]">+52.6%</p>
+                      <div class="flex gap-2">
+                        <p class="text-[#191618] text-right text-[12px]">
+                          Twiter <br />
+                          Index
+                        </p>
+                        <div class="bg-[#7CA63A] w-1 h-8"></div>
+                      </div>
+                    </div>
+                    <!-- singale card end  -->
+                    <!-- single card  -->
+                    <div
+                      class="bg-[#F3F3F3] px-4 flex justify-between gap-10 p-3 rounded-sm"
+                    >
+                      <p class="text-[#6F34A1]">+46.6%</p>
+                      <div class="flex gap-2">
+                        <p class="text-[#191618] text-right text-[12px]">
+                          Microsoft <br />
+                          Index
+                        </p>
+                        <div class="bg-[#6F34A1] w-1 h-8"></div>
+                      </div>
+                    </div>
+                    <!-- singale card end  -->
+                  </div>
+
+                  <div
+                    class="flex flex-col md:flex-row space-y-3 justify-between"
+                  >
+                    <div
+                      class="flex w-full md:block justify-between md:space-y-3"
+                    >
+                      <button
+                        class="text-white bg-[#2042B6] hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-normal rounded-[124px] text-[12px] px-4 py-2 text-center inline-flex items-center"
+                        type="button"
+                      >
+                        Sectors
+                        <svg
+                          class="w-3 h-3 md:ms-16 ms-10"
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 10 6"
+                        >
+                          <path
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="m1 1 4 4 4-4"
+                          />
+                        </svg>
+                      </button>
+                      <button
+                        class="text-white bg-[#2042B6] hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-normal rounded-[124px] text-[12px] px-4 py-2 text-center inline-flex items-center"
+                        type="button"
+                      >
+                        Type of IPO
+                        <svg
+                          class="w-3 h-3 md:ms-16 ms-10"
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 10 6"
+                        >
+                          <path
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="m1 1 4 4 4-4"
+                          />
+                        </svg>
+                      </button>
+                    </div>
+
+                    <div>
+                      <ul
+                        class="bg-[#EFF3F6] p-4 rounded-full flex gap-3 text-[#748DA1] text-[12px]"
+                      >
+                        <li class="hover:underline p-2">
+                          <a href="#">1Y</a>
+                        </li>
+                        <li class="hover:underline p-2">
+                          <a href="#">YTD</a>
+                        </li>
+                        <li class="bg-[#2042B6] rounded-full px-2 py-2">
+                          <a href="#">6M</a>
+                        </li>
+                        <li class="hover:underline p-2">
+                          <a href="#">1M</a>
+                        </li>
+                        <li class="hover:underline p-2">
+                          <a href="#">1W</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Legend chart Indicator -->
+
+                <div id="chartContainer" class="w-full h-[300px] mb-10"></div>
+                <!-- End Legend Indicator -->
+              </div>
+            </div>
+          </section>
+
+          <!-- table section  -->
+          <section class="bg-white py-5 px-4">
+            <div class="flex w-full justify-start items-center mt-8">
+              <div class="w-[50%]">
+                <h1 class="text-[#191618] text-lg">All Companies</h1>
+              </div>
+              <div class="bg-[#F3F3F3] w-[50%]">
+                <form class="w-[90%]">
+                  <label
+                    for="default-search"
+                    class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
+                    >Search</label
+                  >
+                  <div class="relative">
+                    <div
+                      class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none"
+                    >
+                      <svg
+                        class="w-4 h-4 text-gray-500 dark:text-gray-400"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 20 20"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+                        />
+                      </svg>
+                    </div>
+                    <input
+                      type="search"
+                      id="default-search"
+                      class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500"
+                      placeholder="Search Companis..."
+                      required
+                    />
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="relative overflow-x-auto">
+              <form action="#">
+                <table
+                  class="w-full text-sm text-left rtl:text-right text-gray-500"
+                >
+                  <thead
+                    class="text-md font-messina font-normal text-gray-700 bg-gray-50 font-"
+                  >
+                    <tr>
+                      <th scope="col" class="px-6 py-3">Company</th>
+                      <th scope="col" class="px-6 py-3">Ticker</th>
+
+                      <th scope="col" class="px-6 py-3">Vertical</th>
+                      <th scope="col" class="px-6 py-3">Price</th>
+                      <th scope="col" class="px-6 py-3">Market Cap ($B)</th>
+                      <th scope="col" class="px-6 py-3">Revenue Growth</th>
+                      <th scope="col" class="px-6 py-3">Growth Margin</th>
+                      <th scope="col" class="px-6 py-3">EV/Revenue</th>
+                      <th scope="col" class="px-6 py-3">YTD Performance</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="bg-white border-b">
+                      <th
+                        scope="row"
+                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
+                      >
+                        Adyen
+                      </th>
+                      <td class="px-6 py-4">AFRM</td>
+                      <td class="px-6 py-4">Paymnt</td>
+                      <td class="px-6 py-4">$2999</td>
+                      <td class="px-6 py-4">$2999</td>
+                      <td class="px-6 py-4">29%</td>
+                      <td class="px-6 py-4">29%</td>
+                      <td class="px-6 py-4">2.7</td>
+
+                      <td class="px-6 py-4">2.7%</td>
+                    </tr>
+                    <tr class="bg-white border-b">
+                      <th
+                        scope="row"
+                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
+                      >
+                        Adyen
+                      </th>
+                      <td class="px-6 py-4">AFRM</td>
+                      <td class="px-6 py-4">Paymnt</td>
+                      <td class="px-6 py-4">$2999</td>
+                      <td class="px-6 py-4">$2999</td>
+                      <td class="px-6 py-4">29%</td>
+                      <td class="px-6 py-4">29%</td>
+                      <td class="px-6 py-4">2.7</td>
+
+                      <td class="px-6 py-4">2.7%</td>
+                    </tr>
+                    <tr class="bg-white border-b">
+                      <th
+                        scope="row"
+                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
+                      >
+                        Adyen
+                      </th>
+                      <td class="px-6 py-4">AFRM</td>
+                      <td class="px-6 py-4">Paymnt</td>
+                      <td class="px-6 py-4">$2999</td>
+                      <td class="px-6 py-4">$2999</td>
+                      <td class="px-6 py-4">29%</td>
+                      <td class="px-6 py-4">29%</td>
+                      <td class="px-6 py-4">2.7</td>
+
+                      <td class="px-6 py-4">2.7%</td>
+                    </tr>
+                    <tr class="bg-white border-b">
+                      <th
+                        scope="row"
+                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
+                      >
+                        Adyen
+                      </th>
+                      <td class="px-6 py-4">AFRM</td>
+                      <td class="px-6 py-4">Paymnt</td>
+                      <td class="px-6 py-4">$2999</td>
+                      <td class="px-6 py-4">$2999</td>
+                      <td class="px-6 py-4">29%</td>
+                      <td class="px-6 py-4">29%</td>
+                      <td class="px-6 py-4">2.7</td>
+
+                      <td class="px-6 py-4">2.7%</td>
+                    </tr>
+                    <tr class="bg-white border-b">
+                      <th
+                        scope="row"
+                        class="px-6 py-4 font-medium font text-gray-900 whitespace-nowrap"
+                      >
+                        Adyen
+                      </th>
+                      <td class="px-6 py-4">AFRM</td>
+                      <td class="px-6 py-4">Paymnt</td>
+                      <td class="px-6 py-4">$2999</td>
+                      <td class="px-6 py-4">$2999</td>
+                      <td class="px-6 py-4">29%</td>
+                      <td class="px-6 py-4">29%</td>
+                      <td class="px-6 py-4">2.7</td>
+
+                      <td class="px-6 py-4">2.7%</td>
+                    </tr>
+                    <tr class="bg-white border-b">
+                      <th
+                        scope="row"
+                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
+                      >
+                        Adyen
+                      </th>
+                      <td class="px-6 py-4">AFRM</td>
+                      <td class="px-6 py-4">Paymnt</td>
+                      <td class="px-6 py-4">$2999</td>
+                      <td class="px-6 py-4">$2999</td>
+                      <td class="px-6 py-4">29%</td>
+                      <td class="px-6 py-4">29%</td>
+                      <td class="px-6 py-4">2.7</td>
+
+                      <td class="px-6 py-4">2.7%</td>
+                    </tr>
+                    <tr class="bg-white border-b">
+                      <th
+                        scope="row"
+                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
+                      >
+                        Adyen
+                      </th>
+                      <td class="px-6 py-4">AFRM</td>
+                      <td class="px-6 py-4">Paymnt</td>
+                      <td class="px-6 py-4">$2999</td>
+                      <td class="px-6 py-4">$2999</td>
+                      <td class="px-6 py-4">29%</td>
+                      <td class="px-6 py-4">29%</td>
+                      <td class="px-6 py-4">2.7</td>
+
+                      <td class="px-6 py-4">2.7%</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </form>
+            </div>
+
+            <!-- download button  -->
+            <div
+              class="w-full flex flex-col sm:flex-row justify-center sm:justify-end items-center gap-3 mt-5"
+            >
+              <div>
+                <button
+                  class="bg-[#2042B6] hover:bg-[#1f3da0] w-full md:w-auto rounded-md px-4 py-2 text-white text-lg shadow-lg shadow-blue-gray-300 mb-5 transform duration-150"
+                >
+                  Download ‘All Companies’ Data
+                </button>
+              </div>
+              <div>
+                <button
+                  class="bg-[#2042B6] hover:bg-[#1f3da0] w-full md:w-auto rounded-md px-4 py-2 text-white shadow-lg shadow-blue-gray-300 mb-5 transform duration-150"
+                >
+                  View Methodology
+                </button>
+              </div>
+            </div>
+          </section>
+          <!-- Potential Future Listings  -->
+          <section class=" ">
+            <div>
+              <div class="mx-auto max-w-7xl">
+                <h1
+                  class="text-[#191618] mt-3 sm:mt-2 mb-2 md:mb-4 font-normal text-xl sm:text-2xl md:text-[48px]"
+                >
+                  Potential Future Listings
+                </h1>
+                <p
+                  class="text-[#191618] font-messina font-light text-sm md:text-base"
+                >
+                  Porem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
+                  vulputate libero et velit interdum, ac aliquet odio mattis.
+                  Class aptent taciti sociosqu ad litora torquent per conubia
+                  nostra, per inceptos himenaeos.
+                </p>
+              </div>
+              <!-- Potential Future Listings card  -->
+              <div class="mt-5">
+                <div class="grid grid-cols-3 md:grid-cols-5 gap-3">
+                  <div
+                    class="bg-white w-18 h-14 p-3 md:w-[220px] md:h-[120px] flex justify-center items-center"
+                  >
+                    <img
+                      src="./images/Group 226.png"
+                      alt="group  "
+                      class="w-[125px] h-[46px]"
+                    />
+                  </div>
+                  <div
+                    class="bg-white w-18 h-14 p-3 md:w-[220px] md:h-[120px] flex justify-center items-center"
+                  >
+                    <img
+                      class="w-[125px] h-[46px]"
+                      src="./images/Group 227.png"
+                      alt="group "
+                    />
+                  </div>
+                  <div
+                    class="bg-white w-18 h-14 p-3 md:w-[220px] md:h-[120px] flex justify-center items-center"
+                  >
+                    <img
+                      class="w-[125px] h-[46px]"
+                      src="./images/Group 225.png"
+                      alt="group "
+                    />
+                  </div>
+                  <div
+                    class="bg-white w-18 h-14 p-3 md:w-[220px] md:h-[120px] flex justify-center items-center"
+                  >
+                    <img
+                      class="w-[125px] h-[46px]"
+                      src="./images/Group 224.png"
+                      alt="group "
+                    />
+                  </div>
+                  <div
+                    class="bg-white w-18 h-14 p-3 md:w-[220px] md:h-[120px] flex justify-center items-center"
+                  >
+                    <img
+                      class="w-[125px] h-[46px]"
+                      src="./images/Group 226.png"
+                      alt="group "
+                    />
+                  </div>
+                  <div
+                    class="bg-white w-18 h-14 p-3 md:w-[220px] md:h-[120px] flex justify-center items-center"
+                  >
+                    <img
+                      class="w-[125px] h-[46px]"
+                      src="./images/Group 224.png"
+                      alt="group "
+                    />
+                  </div>
+                  <div
+                    class="bg-white w-18 h-14 p-3 md:w-[220px] md:h-[120px] flex justify-center items-center"
+                  >
+                    <img
+                      class="w-[125px] h-[46px]"
+                      src="./images/Group 225.png"
+                      alt="group "
+                    />
+                  </div>
+                  <div
+                    class="bg-white w-18 h-14 p-3 md:w-[220px] md:h-[120px] flex justify-center items-center"
+                  >
+                    <img
+                      class="w-[125px] h-[46px]"
+                      src="./images/Group 227.png"
+                      alt="group "
+                    />
+                  </div>
+                  <div
+                    class="bg-white w-18 h-14 p-3 md:w-[220px] md:h-[120px] flex justify-center items-center"
+                  >
+                    <img
+                      class="w-[125px] h-[46px]"
+                      src="./images/Group 224.png"
+                      alt="group "
+                    />
+                  </div>
+                  <div
+                    class="bg-white w-18 h-14 p-3 md:w-[220px] md:h-[120px] flex justify-center items-center"
+                  >
+                    <img
+                      class="w-[125px] h-[46px]"
+                      src="./images/Group 227.png"
+                      alt="group "
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- State of USA  -->
+
+          <section class="mt-7">
+            <div class="">
+              <!-- State of USA -->
+              <div class="">
+                <h1
+                  class="text-3xl sm:text-4xl md:text-[48px] text-[#191618] mb-4"
+                >
+                  State of USA
+                </h1>
+
+                <button
+                  class="text-white bg-[#2042B6] hover:bg-[#2c51cc] focus:ring-4 focus:outline-none focus:ring-blue-300 font-normal rounded-[124px] text-lg md:text-[30px] px-6 py-2 text-center inline-flex items-center transform duration-150 transition-all"
+                  type="button"
+                >
+                  2024
+                  <svg
+                    class="w-3 h-3 md:ms-16 ms-10"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 10 6"
+                  >
+                    <path
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="m1 1 4 4 4-4"
+                    />
+                  </svg>
+                </button>
+
+                <!-- Dropdown menu -->
+                <div
+                  id="dropdownDelay"
+                  class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
+                >
+                  <ul
+                    class="py-2 text-sm text-gray-700 dark:text-gray-200"
+                    aria-labelledby="dropdownDelayButton"
+                  >
+                    <li>
+                      <a
+                        href="#"
+                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                        >Dashboard</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="#"
+                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                        >Settings</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="#"
+                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                        >Earnings</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="#"
+                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                        >Sign out</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div
+                class="bg-no-repeat bg-contain bg-center"
+                style="background-image: url(./images/Group\ 364.png)"
+              >
+                <p class="text[#191618] font-[350] text-sm mt-5 mb-4">
+                  Click through the slides or download the report to view
+                  natively on your device.
+                </p>
+
+                <div class="relative w-full max-w-7xl mx-auto mt-10">
+                  <!-- Carousel Container -->
+                  <div class="relative overflow-hidden rounded-lg">
+                    <!-- Slides -->
+                    <div
+                      id="carouselSlides"
+                      class="flex transition-transform duration-500 ease-in-out"
+                    >
+                      <img
+                        src="./images/rhrdgd.png"
+                        alt="Slide 1"
+                        class="w-[580px] h-64 object-cover"
+                      />
+
+                      <img
+                        src="./images/rgegdg.png"
+                        alt="Slide 2"
+                        class="w-[580px] h-64 object-cover"
+                      />
+
+                      <img
+                        src="./images/rgegdg.png"
+                        alt="Slide 3"
+                        class="w-[580px] h-64 object-cover"
+                      />
+
+                      <img
+                        src="./images/rhrdgd.png"
+                        alt="Slide 1"
+                        class="w-[580px] h-64 object-cover"
+                      />
+
+                      <img
+                        src="./images/rgegdg.png"
+                        alt="Slide 2"
+                        class="w-[580px] h-64 object-cover"
+                      />
+
+                      <img
+                        src="./images/dehjtfgdt.png"
+                        alt="Slide 3"
+                        class="w-[580px] h-64 object-cover"
+                      />
+                    </div>
+                    <div>
+                      <!-- Navigation -->
+                      <div class="flex gap-2">
+                        <button
+                          id="prev"
+                          class="absolute top-[92%] left-4 transform -translate-y-1/2 bg-white text-[#2042B6] px-4 py-2 p-2 rounded-full"
+                        >
+                          &lt;
+                        </button>
+                        <button
+                          id="next"
+                          class="absolute top-[85%] left-16 transform translate-y bg-white text-[#2042B6] px-4 py-2 rounded-full"
+                        >
+                          &gt;
+                        </button>
+                      </div>
+                      <!-- pagination  -->
+
+                      <nav class="flex justify-center">
+                        <ul class="flex items-center space-x-1">
+                          <li>
+                            <h1>Pages</h1>
+                          </li>
+
+                          <li>
+                            <a
+                              href="#"
+                              class="px-4 py-2 text-sm font-medium text-gray-600 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-800"
+                              >1 & 2</a
+                            >
+                          </li>
+                          <p>of 37</p>
+                        </ul>
+                      </nav>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Stories & Ideas  -->
+
+          <section class="mt-14 relative">
+            <div>
+              <div>
+                <h1 class="text-2xl md:text-[40px] text-[#191618] md:mb-2">
+                  Stories & Ideas
+                </h1>
+                <p class="text-base md:text-lg text-[#191618] font-[350]">
+                  The latest news and updates
+                </p>
+              </div>
+              <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-[20px]">
+                <!-- start card  -->
+                <div class="">
+                  <div class="absolute top-20 md:top-16">
+                    <img
+                      src="./images/image 97.png"
+                      alt="imageInf"
+                      class="z-50"
+                    />
+                  </div>
+
+                  <!-- card  -->
+
+                  <div
+                    class="w-full sm:w-[280px] md:w-[380px] h-[240px] md:h-[220px] bg-white mt-[3.5rem] p-2 rounded-sm"
+                  >
+                    <div class="">
+                      <br />
+                      <br />
+                      <br />
+                      <br class="md:hidden" />
+
+                      <p class="text-[#2042B6] text-[14px] font-normal">
+                        By: Sahabuddin Sagor
+                      </p>
+                      <p class="text-[#191618] text-[14px] font-normal mt-1">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Maxime mollitia.
+                      </p>
+                      <button
+                        class="text-[16px] bg-[#2042B6] px-4 py-2 rounded-3xl text-white mt-3"
+                      >
+                        Read More
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <!-- end card  -->
+                <!-- start card  -->
+                <div>
+                  <div class="absolute top-[23rem] sm:top-16 md:top-16">
+                    <img
+                      src="./images/image 98.png"
+                      alt="imageInf"
+                      class="z-50"
+                    />
+                  </div>
+
+                  <!-- card  -->
+
+                  <div
+                    class="w-full sm:w-[280px] md:w-[380px] h-[240px] md:h-[220px] bg-white mt-[3.5rem] p-2 rounded-sm"
+                  >
+                    <div class="">
+                      <br />
+                      <br />
+                      <br />
+
+                      <p class="text-[#2042B6] text-[14px] font-normal">
+                        By: Sahabuddin Sagor
+                      </p>
+                      <p class="text-[#191618] text-[14px] font-normal mt-1">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Maxime mollitia.
+                      </p>
+                      <button
+                        class="text-[16px] bg-[#2042B6] px-4 py-2 rounded-3xl text-white mt-3"
+                      >
+                        Read More
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <!-- end card  -->
+                <!-- start card  -->
+                <div>
+                  <div class="absolute top-[43rem] sm:top-[23rem] md:top-16">
+                    <img
+                      src="./images/image 97.png"
+                      alt="imageInf"
+                      class="z-50"
+                    />
+                  </div>
+
+                  <!-- card  -->
+
+                  <div
+                    class="w-full sm:w-[280px] md:w-[380px] h-[240px] md:h-[220px] bg-white mt-[3.5rem] p-2 rounded-sm"
+                  >
+                    <div class="">
+                      <br />
+                      <br />
+                      <br />
+
+                      <p class="text-[#2042B6] text-[14px] font-normal">
+                        By: Sahabuddin Sagor
+                      </p>
+                      <p class="text-[#191618] text-[14px] font-normal mt-1">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Maxime mollitia.
+                      </p>
+                      <button
+                        class="text-[16px] bg-[#2042B6] px-4 py-2 rounded-3xl text-white mt-3"
+                      >
+                        Read More
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <!-- end card  -->
+                <!-- start card  -->
+                <div>
+                  <div
+                    class="absolute top-[63rem] sm:top-[23rem] md:top-[23rem]"
+                  >
+                    <img
+                      src="./images/image 98.png"
+                      alt="imageInf"
+                      class="z-50"
+                    />
+                  </div>
+
+                  <!-- card  -->
+
+                  <div
+                    class="w-full sm:w-[280px] md:w-[380px] h-[240px] md:h-[220px] bg-white mt-[3.5rem] p-2 rounded-sm"
+                  >
+                    <div class="">
+                      <br />
+                      <br />
+                      <br />
+
+                      <p class="text-[#2042B6] text-[14px] font-normal">
+                        By: Sahabuddin Sagor
+                      </p>
+                      <p class="text-[#191618] text-[14px] font-normal mt-1">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Maxime mollitia.
+                      </p>
+                      <button
+                        class="text-[16px] bg-[#2042B6] px-4 py-2 rounded-3xl text-white mt-3"
+                      >
+                        Read More
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <!-- end card  -->
+                <div>
+                  <div
+                    class="absolute top-[82rem] sm:top-[43rem] md:top-[23rem]"
+                  >
+                    <img
+                      src="./images/image 97.png"
+                      alt="imageInf"
+                      class="z-50"
+                    />
+                  </div>
+
+                  <!-- card  -->
+
+                  <div
+                    class="w-full sm:w-[280px] md:w-[380px] h-[240px] md:h-[220px] bg-white mt-[3.5rem] p-2 rounded-sm"
+                  >
+                    <div class="">
+                      <br />
+                      <br />
+                      <br />
+
+                      <p class="text-[#2042B6] text-[14px] font-normal">
+                        By: Sahabuddin Sagor
+                      </p>
+                      <p class="text-[#191618] text-[14px] font-normal mt-1">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Maxime mollitia.
+                      </p>
+                      <button
+                        class="text-[16px] bg-[#2042B6] px-4 py-2 rounded-3xl text-white mt-3"
+                      >
+                        Read More
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <!-- end card  -->
+                <div>
+                  <div
+                    class="absolute top-[102rem] sm:top-[43rem] md:top-[23rem]"
+                  >
+                    <img
+                      src="./images/image 98.png"
+                      alt="imageInf"
+                      class="z-50"
+                    />
+                  </div>
+
+                  <!-- card  -->
+
+                  <div
+                    class="w-full sm:w-[280px] md:w-[380px] h-[240px] md:h-[220px] bg-white mt-[3.5rem] p-2 rounded-sm"
+                  >
+                    <div class="">
+                      <br />
+                      <br />
+                      <br />
+
+                      <p class="text-[#2042B6] text-[14px] font-normal">
+                        By: Sahabuddin Sagor
+                      </p>
+                      <p class="text-[#191618] text-[14px] font-normal mt-1">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Maxime mollitia.
+                      </p>
+                      <button
+                        class="text-[16px] bg-[#2042B6] px-4 py-2 rounded-3xl text-white mt-3"
+                      >
+                        Read More
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <!-- end card  -->
+              </div>
+            </div>
+          </section>
+
+          <div class="mt-10 mb-10">
+            <div class="mb-1 w-full bg-[#90B8F0] h-[1px]"></div>
+          </div>
+          <!-- About WPPOOL  -->
+          <section>
+            <div class="flex flex-col md:flex-row bg-white rounded-sm mt-7">
+              <div class="md:w-[50%] p-2 mt-7">
+                <h1
+                  class="text-[#191618] text-lg md:text-[48px] font-light md:mb-4"
+                >
+                  About WPPOOL
+                </h1>
+
+                <p
+                  class="text-[#7D7F81] text-base md:text-[30px] font-light mb-4"
+                >
+                  Investing in wppool for over 50 years
+                </p>
+                <p class="text-[#191618] text-[12px] md:text-sm">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Maxime mollitia,molestiae quas vel sint commodi repudiandae
+                  consequuntur voluptatum laborumnumquam blanditiis harum
+                  quisquam eius sed odit fugiat iusto fuga praesentiumoptio,
+                  eaque rerum! Provident similique accusantium nemo autem.
+                </p>
+                <button
+                  class="text-[16px] bg-[#2042B6] px-4 py-2 rounded-3xl text-white mt-3"
+                >
+                  Contact WPPOOL
+                </button>
+              </div>
+              <div class="md:w-[523px] h-[320px] mt-7">
+                <img
+                  class="w-full h-full"
+                  src="./images/Mask group.png"
+                  alt="mask group "
+                />
+              </div>
+            </div>
+          </section>
+
+          <div class="mt-10 mb-10">
+            <div class="mb-1 w-full bg-[#90B8F0] h-[1px]"></div>
+          </div>
+          <!-- Portfolio Companies  -->
+          <section class="mt-10">
+            <h1
+              class="text-[#191618] text-base md:text-[48px] font-normal mb-5"
+            >
+              Selected WPPOOL Portfolio Companies
+            </h1>
+            <div class="bg-white rounded-sm w-full">
+              <img
+                class="w-full"
+                src="./images/Group 431.png"
+                alt=""
+                srcset=""
+              />
+            </div>
+          </section>
+
+          <!-- footer  -->
+
+          <footer class="mt-10 mb-10">
+            <div class="flex flex-col md:flex-row">
+              <!-- left side  -->
+              <div class="basis-2/5">
+                <h1 class="text-lg md:text-2xl">
+                  Experience remarkable WordPress products with a new level of
+                  power, beauty, and human-centered designs.
+                </h1>
+                <div class="mt-8 bt-3 md:h-56"></div>
+                <div>
+                  <p class="text-[#9FA0A1] text-[14px] font-bold">
+                    ©2024 Terms of Use Privacy Policy
+                  </p>
+
+                  <p class="text-black text-[14px] font-light mt-2">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Maxime mollitia,molestiae quas vel sint commodi repudiandae
+                    consequuntur voluptatum laborum numquam blanditiis harum
+                    quisquam eius sed odit fugiat iusto fuga praesentium optio,
+                    eaque rerum! Provident similique accusantium nemo autem.
+                    Veritatis obcaecati tenetur iure eius earum ut molestias
+                    architecto voluptate aliquam nihil, eveniet aliquid culpa
+                    officia aut! Impedit sit sunt quaera
+                  </p>
+                </div>
+              </div>
+              <!-- middle side  -->
+              <div class="basis-1/5 md:text-center">
+                <h2 class="text-[#9FA0A1] text-[20px] font-bold mt-5 md:mt-0">
+                  Jump to
+                </h2>
+                <div class="">
+                  <ul
+                    class="grid grid-flow-row md:justify-center text-left mt-1 mb-1"
+                  >
+                    <li>
+                      <a
+                        class="text-[#115CD9] text-[20px] hover:underline"
+                        href="#"
+                        >About Us
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        class="text-[#115CD9] text-[20px] hover:underline"
+                        href="#"
+                        >News
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        class="text-[#115CD9] text-[20px] hover:underline"
+                        href="#"
+                        >Stories
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        class="text-[#115CD9] text-[20px] hover:underline"
+                        href="#"
+                        >Job
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        class="text-[#115CD9] text-[20px] hover:underline"
+                        href="#"
+                        >Contac us
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <!-- right side  -->
+              <div class="basis-2/5">
+                <div>
+                  <div>
+                    <h2 class="text-[#191618] text-[20px] font-bold">
+                      Cambridge
+                    </h2>
+                    <p class="text-[#191618] text-lg font-light">
+                      70728 Yost Burg, <br />
+                      North Magdaleneview, <br />
+                      UT 97952-2814
+                    </p>
+                    <div class="mt-6 mb-4">
+                      <div class="mb-1 w-[258px] bg-[#9FA0A1] h-[1px]"></div>
+                    </div>
+                  </div>
+                  <div>
+                    <h2 class="text-[#191618] text-[20px] font-bold">London</h2>
+                    <p class="text-[#191618] text-lg font-light">
+                      Suite 292 903 Stehr Streets, <br />
+                      Langworthtown, SC 94577-9465
+                    </p>
+                    <div class="mt-6 mb-4">
+                      <div class="mb-1 w-[258px] bg-[#9FA0A1] h-[1px]"></div>
+                    </div>
+                  </div>
+                  <div>
+                    <h2 class="text-[#191618] text-[20px] font-bold">
+                      San Francisco
+                    </h2>
+                    <p class="text-[#191618] text-lg font-light">
+                      19837 Gilberto Lodge, <br />
+                      Lake Kendallville, <br />
+                      Colorado - 97392, Bhutan
+                    </p>
+                    <div class="mt-6 mb-4">
+                      <div class="mb-1 w-[258px] bg-[#9FA0A1] h-[1px]"></div>
+                    </div>
+                  </div>
+                </div>
+                <!-- linked icon  -->
+                <div class="flex justify-between w-60 md:w-80">
+                  <a href="#">
+                    <img src="./images/twitter.png" alt="linkedIn" />
+                  </a>
+                  <a href="#">
+                    <img src="./images//linkedin.png" alt="linkedIn" />
+                  </a>
+                  <a href="#">
+                    <img src="./images/twitter.png" alt="linkedIn" />
+                  </a>
+                  <a href="#">
+                    <img src="./images//linkedin.png" alt="linkedIn" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </footer>
+        </div>
+      </main>
+    </div>
+
+    <script src="./index.js"></script>
+
+    <!-- link canvas chart  -->
+    <script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
+  </body>
+</html>
